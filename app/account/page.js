@@ -1,3 +1,6 @@
+export const metadata = {
+  title: "account",
+};
 function page() {
   return <h1>welcome to accout</h1>;
 }

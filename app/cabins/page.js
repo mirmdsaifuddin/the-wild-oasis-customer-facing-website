@@ -1,19 +1,22 @@
 import { Suspense } from "react";
 import CabinList from "../_components/CabinList";
 import Spinner from "../_components/Spinner";
+import Filter from "../_components/Filter";
+import ReservationReminder from "../_components/ReservationReminder";
 
 //export const revalidate = 0;
-//export const revalidate = 60;
+export const revalidate = 3600;
 
 export const metadata = {
   title: "cabins",
 };
 
-function page() {
+function page({ searchParams }) {
   // CHANGE
 
   // console.log("starting...");
   // console.log(cabins);
+  const filtered = searchParams?.capacity ?? "all";
 
   return (
     <div>
@@ -21,15 +24,19 @@ function page() {
         Our Luxury Cabins
       </h1>
       <p className="text-primary-200 text-lg mb-10">
-        Cozy yet luxurious cabins, located right in the heart of the Italian
+        Cozy yet luxurious cabins, located right in the heart of the Ooty
         Dolomites. Imagine waking up to beautiful mountain views, spending your
         days exploring the dark forests around, or just relaxing in your private
         hot tub under the stars. Enjoy nature&apos;s beauty in your own little
         home away from home. The perfect spot for a peaceful, calm vacation.
         Welcome to paradise.
       </p>
-      <Suspense fallback={<Spinner />}>
-        <CabinList />
+      <div className="justify-end flex py-4">
+        <Filter />
+      </div>
+      <Suspense fallback={<Spinner />} key={filtered}>
+        <CabinList filter={filtered} />
+        <ReservationReminder />
       </Suspense>
     </div>
   );

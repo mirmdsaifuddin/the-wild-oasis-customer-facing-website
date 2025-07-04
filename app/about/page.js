@@ -19,7 +19,7 @@ export default async function Page() {
         <div className="space-y-8">
           <p>
             Where nature&apos; beauty and comfortable living blend seamlessly.
-            Hidden away in the heart of the Italian Dolomites, this is your
+            Hidden away in the heart of the Ooty Mountains, this is your
             paradise away from home. But it&apos; not just about the luxury
             cabins. It&apos; about the experience of reconnecting with nature
             and enjoying simple pleasures with family.
